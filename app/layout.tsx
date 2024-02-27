@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+// Using IPM_Plex font
+// Set up meta data
+const IBMPlex = IBM_Plex_Sans({ 
+  subsets: ["latin"],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-ibm-plex' 
+});
 
 export const metadata: Metadata = {
   title: "Picturify - Production",
@@ -16,7 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+       {/* Import cn fron shadcn. Use IPMPlex font. */}
+      <body className={cn("font-IPMPlex antialiased", IBMPlex.variable)}>
+        {children}
+      </body>
     </html>
   );
 }
